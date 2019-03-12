@@ -2333,8 +2333,8 @@ _THREADING_LIST = (
     ('gmtime(', 'gmtime_r(', _UNSAFE_FUNC_PREFIX + r'gmtime\([^)]+\)'),
     ('localtime(', 'localtime_r(', _UNSAFE_FUNC_PREFIX + r'localtime\([^)]+\)'),
     ('rand(', 'rand_r(', _UNSAFE_FUNC_PREFIX + r'rand\(\)'),
-    ('strtok(', 'strtok_r(',
-     _UNSAFE_FUNC_PREFIX + r'strtok\([^)]+\)'),
+    # ('strtok(', 'strtok_r(',
+    #  _UNSAFE_FUNC_PREFIX + r'strtok\([^)]+\)'),
     ('ttyname(', 'ttyname_r(', _UNSAFE_FUNC_PREFIX + r'ttyname\([^)]+\)'),
     )
 
@@ -5035,9 +5035,10 @@ def CheckLanguage(filename, clean_lines, linenum, file_extension,
             'Do not use namespace using-directives.  '
             'Use using-declarations instead.')
     else:
-      error(filename, linenum, 'build/namespaces', 5,
-            'Do not use namespace using-directives.  '
-            'Use using-declarations instead.')
+      _ = 2333
+      # error(filename, linenum, 'build/namespaces', 5,
+      #       'Do not use namespace using-directives.  '
+      #       'Use using-declarations instead.')
 
   # Detect variable-length arrays.
   match = Match(r'\s*(.+::)?(\w+) [a-z]\w*\[(.+)];', line)
@@ -6062,7 +6063,7 @@ def ProcessLine(filename, file_extension, clean_lines, line,
   CheckStyle(filename, clean_lines, line, file_extension, nesting_state, error)
   CheckLanguage(filename, clean_lines, line, file_extension, include_state,
                 nesting_state, error)
-  CheckForNonConstReference(filename, clean_lines, line, nesting_state, error)
+  # CheckForNonConstReference(filename, clean_lines, line, nesting_state, error)
   CheckForNonStandardConstructs(filename, clean_lines, line,
                                 nesting_state, error)
   CheckVlogArguments(filename, clean_lines, line, error)
@@ -6185,7 +6186,7 @@ def ProcessFileData(filename, file_extension, lines, error,
     FlagCxx11Features(filename, clean_lines, line, error)
   nesting_state.CheckCompletedBlocks(filename, error)
 
-  CheckForIncludeWhatYouUse(filename, clean_lines, include_state, error)
+  # CheckForIncludeWhatYouUse(filename, clean_lines, include_state, error)
 
   # Check that the .cc file has included its header if it exists.
   if _IsSourceExtension(file_extension):
