@@ -6353,8 +6353,9 @@ def ProcessFile(filename, vlevel, extra_check_functions=None):
   # When reading from stdin, the extension is unknown, so no cpplint tests
   # should rely on the extension.
   if filename != '-' and file_extension not in GetAllExtensions():
-    _cpplint_state.PrintError('Ignoring %s; not a valid file name '
-                     '(%s)\n' % (filename, ', '.join(GetAllExtensions())))
+    _ = 2333
+    # _cpplint_state.PrintError('Ignoring %s; not a valid file name '
+    #                  '(%s)\n' % (filename, ', '.join(GetAllExtensions())))
   else:
     ProcessFileData(filename, file_extension, lines, Error,
                     extra_check_functions)
