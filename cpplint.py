@@ -703,7 +703,7 @@ def GetHeaderExtensions():
 # This is set by --extensions flag
 def GetAllExtensions():
   if not _valid_extensions:
-    return GetHeaderExtensions().union(set(['c', 'cc', 'cpp', 'cxx', 'c++', 'cu']))
+    return GetHeaderExtensions().union(set(['c', 'cc', 'cpp', 'tpp', 'cxx', 'c++', 'cu']))
   return _valid_extensions
 
 def GetNonHeaderExtensions():
